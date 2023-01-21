@@ -1,7 +1,9 @@
 """
 Базовые функции форматирования списка источников
 """
+from typing import Type
 
+from formatters.models import CiteModel
 from formatters.styles.base import BaseCitationStyle
 from logger import get_logger
 
@@ -13,12 +15,18 @@ class BaseCitationFormatter:
     Базовый класс для итогового форматирования списка источников.
     """
 
-    def __init__(self, formatted_items: list[BaseCitationStyle]) -> None:
+    formatters_map: dict[Type[CiteModel], Type[BaseCitationStyle]]
+
+    def __init__(self, models: list[CiteModel]) -> None:
         """
         Конструктор.
 
-        :param formatted_items: Список объектов для итогового форматирования
+        :param models: Список объектов для итогового форматирования
         """
+
+        formatted_items = []
+        for model in models:
+            formatted_items.append(self.formatters_map[type(model)](model))
 
         self.formatted_items = formatted_items
 

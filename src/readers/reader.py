@@ -10,6 +10,7 @@ from formatters.models import (
     ArticlesCollectionModel,
     AutoReportModel,
     BookModel,
+    CiteModel,
     DissertationModel,
     InternetResourceModel,
     JournalArticleModel,
@@ -216,7 +217,7 @@ class SourcesReader:
         logger.info("Загрузка рабочей книги ...")
         self.workbook: Workbook = openpyxl.load_workbook(path)
 
-    def read(self) -> list:
+    def read(self) -> list[CiteModel]:
         """
         Чтение исходного файла.
 

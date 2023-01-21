@@ -2,7 +2,6 @@
 Тестирование функций оформления списка источников по ГОСТ Р 7.0.5-2008.
 """
 
-from formatters.base import BaseCitationFormatter
 from formatters.models import (
     ArticlesCollectionModel,
     AutoReportModel,
@@ -15,6 +14,7 @@ from formatters.models import (
 from formatters.styles.gost import (
     GOSTAutoReport,
     GOSTBook,
+    GOSTCitationFormatter,
     GOSTCollectionArticle,
     GOSTDissertation,
     GOSTInternetResource,
@@ -102,6 +102,16 @@ class TestGOST:
         """
 
         models = [
+            regulation_act_fixture,
+            articles_collection_model_fixture,
+            auto_report_fixture,
+            journal_article_fixture,
+            internet_resource_model_fixture,
+            dissertation_fixture,
+            book_model_fixture,
+        ]
+        results = GOSTCitationFormatter(models).format()
+        expected = [
             GOSTAutoReport(auto_report_fixture),
             GOSTDissertation(dissertation_fixture),
             GOSTJournalArticle(journal_article_fixture),
@@ -110,10 +120,9 @@ class TestGOST:
             GOSTInternetResource(internet_resource_model_fixture),
             GOSTRegulationAct(regulation_act_fixture),
         ]
-        result = BaseCitationFormatter(models).format()
-
         # тестирование сортировки списка источников
-        assert result == models
+        for result, exp in zip(results, expected):
+            assert result.substitute() == exp.substitute()
 
     def test_dissertation(self, dissertation_fixture: DissertationModel) -> None:
         """

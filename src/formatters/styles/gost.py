@@ -4,6 +4,7 @@
 from string import Template
 from typing import Type
 
+from formatters.base import BaseCitationFormatter
 from formatters.models import (
     ArticlesCollectionModel,
     AutoReportModel,
@@ -144,7 +145,7 @@ class GOSTRegulationAct(BaseCitationStyle):
         return self.template.substitute(self.data.dict())
 
 
-class GOSTCitationFormatter:
+class GOSTCitationFormatter(BaseCitationFormatter):
     """
     Базовый класс для итогового форматирования списка источников.
     """
@@ -158,25 +159,3 @@ class GOSTCitationFormatter:
         JournalArticleModel: GOSTJournalArticle,
         RegulationActModel: GOSTRegulationAct,
     }
-
-    def __init__(self, models: list[CiteModel]) -> None:
-        """
-        Конструктор.
-
-        :param models: Список объектов для форматирования
-        """
-
-        formatted_items = []
-        for model in models:
-            formatted_items.append(self.formatters_map[type(model)](model))
-
-        self.formatted_items = formatted_items
-
-    def format(self) -> list[BaseCitationStyle]:
-        """
-        Форматирование списка источников.
-
-        :return:
-        """
-
-        return sorted(self.formatted_items, key=lambda item: item.formatted)

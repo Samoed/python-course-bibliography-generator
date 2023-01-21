@@ -6,8 +6,8 @@ from abc import ABC, abstractmethod
 from typing import Type
 
 from openpyxl.workbook import Workbook
-from pydantic import BaseModel
 
+from formatters.models import CiteModel
 from logger import get_logger
 
 logger = get_logger(__name__)
@@ -29,7 +29,7 @@ class BaseReader(ABC):
 
     @property
     @abstractmethod
-    def model(self) -> Type[BaseModel]:
+    def model(self) -> Type[CiteModel]:
         """
         Получение модели объекта (строки).
 
@@ -66,7 +66,7 @@ class BaseReader(ABC):
         :return: Атрибуты с информацией об индексе столбца и типе данных
         """
 
-    def read(self) -> list[BaseModel]:
+    def read(self) -> list[CiteModel]:
         """
         Чтение исходного файла.
 
