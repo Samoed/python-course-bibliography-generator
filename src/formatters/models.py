@@ -174,7 +174,7 @@ class RegulationActModel(CiteModel):
             publication_year=2020,
             version=1,
             article_number=2,
-            edition=date(2021, 01, 01),
+            edition=date(2021, 1, 1),
         )
     """
 
