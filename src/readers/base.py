@@ -3,7 +3,6 @@
 """
 
 from abc import ABC, abstractmethod
-from datetime import date
 from typing import Type
 
 from openpyxl.workbook import Workbook
@@ -78,29 +77,12 @@ class BaseReader(ABC):
         # чтение со второй строки таблицы (первая строка содержит заголовок)
         for row in self.workbook[self.sheet].iter_rows(min_row=2):
             # обработка строки идет только, если заполнены обязательные столбцы
-            if row[0].value:
-                attrs = {}
+            if not row[0].value:
+                continue
+            # обработка заданных в методе `attributes()` атрибутов
+            attrs = {attr: row[index].value for attr, index in self.attributes.items()}
 
-                # обработка заданных в методе `attributes()` атрибутов
-                for attr, params in self.attributes.items():
-                    index, data_type = list(params.items())[0]
-                    attrs[attr] = row[index].value
-
-                    if not attrs[attr]:
-                        continue
-
-                    if data_type is int:
-                        attrs[attr] = int(str(attrs.get(attr)))
-
-                    if data_type is str:
-                        attrs[attr] = str(attrs.get(attr)).strip()
-
-                    if data_type is date:
-                        value = attrs.get(attr)
-                        if isinstance(value, date):
-                            attrs[attr] = value.strftime("%d.%m.%Y")
-
-                # добавление считанной и обработанной строки в список моделей
-                models.append(self.model(**attrs))
+            # добавление считанной и обработанной строки в список моделей
+            models.append(self.model(**attrs))
 
         return models

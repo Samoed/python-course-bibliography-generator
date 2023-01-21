@@ -10,7 +10,7 @@ docs-html:
 
 # запуск форматирования кода
 format:
-	docker compose run --workdir / app /bin/bash -c "black src docs/source/*.py; isort --profile black src/*.py docs/source/*.py"
+	docker compose run --workdir / app /bin/bash -c "black src docs/source/*.py; isort src/*.py docs/source/*.py"
 
 # запуск статического анализа кода (выявление ошибок типов и форматирования кода)
 lint:
@@ -19,6 +19,12 @@ lint:
 # запуск автоматических тестов
 test:
 	docker compose run app pytest --cov=/src --cov-report html:htmlcov --cov-report term --cov-config=/src/tests/.coveragerc -vv
+
+run:
+	docker compose run app python main.py --help
+
+run-gost:
+	docker compose run app python main.py --citation gost --path_input /media/input.xlsx --path_output /media/output.xlsx
 
 # запуск всех функций поддержки качества кода
 all: format lint test
