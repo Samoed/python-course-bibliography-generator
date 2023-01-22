@@ -2,7 +2,7 @@
 Описание схем объектов (DTO).
 """
 from datetime import date
-from typing import Any, Optional
+from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -35,7 +35,7 @@ class BookModel(CiteModel):
 
     authors: str
     title: str
-    edition: Optional[str]
+    edition: str | None
     city: str
     publishing_house: str
     year: int = Field(..., gt=0)

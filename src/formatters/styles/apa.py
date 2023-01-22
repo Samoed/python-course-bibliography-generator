@@ -1,8 +1,7 @@
-""""
+"""
 Стиль цитирования по ГОСТ Р 7.0.5-2008.
 """
 from string import Template
-from typing import Type
 
 from formatters.base import BaseCitationFormatter
 from formatters.models import (
@@ -148,7 +147,7 @@ class APACitationFormatter(BaseCitationFormatter):
     Базовый класс для итогового форматирования списка источников.
     """
 
-    formatters_map: dict[Type[CiteModel], Type[BaseCitationStyle]] = {
+    formatters_map: dict[type[CiteModel], type[BaseCitationStyle]] = {
         BookModel: APABook,
         InternetResourceModel: APAInternetResource,
         ArticlesCollectionModel: APACollectionArticle,

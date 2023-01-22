@@ -2,7 +2,6 @@
 Запуск приложения.
 """
 from enum import Enum, unique
-from typing import Type
 
 import click
 
@@ -30,7 +29,7 @@ class CitationEnum(str, Enum):
 
 def get_citation_classes(
     citation: str,
-) -> tuple[Type[BaseCitationFormatter], Type[Renderer]]:
+) -> tuple[type[BaseCitationFormatter], type[Renderer]]:
     match citation:
         case CitationEnum.GOST:
             return GOSTCitationFormatter, GOSTRenderer

@@ -3,7 +3,6 @@
 """
 
 from abc import ABC, abstractmethod
-from typing import Type
 
 from openpyxl.workbook import Workbook
 
@@ -29,7 +28,7 @@ class BaseReader(ABC):
 
     @property
     @abstractmethod
-    def model(self) -> Type[CiteModel]:
+    def model(self) -> type[CiteModel]:
         """
         Получение модели объекта (строки).
 

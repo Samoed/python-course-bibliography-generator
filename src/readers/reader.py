@@ -1,7 +1,6 @@
 """
 Чтение исходного файла.
 """
-from typing import Type
 
 import openpyxl
 from openpyxl.workbook import Workbook
@@ -28,7 +27,7 @@ class BookReader(BaseReader):
     """
 
     @property
-    def model(self) -> Type[BookModel]:
+    def model(self) -> type[BookModel]:
         return BookModel
 
     @property
@@ -69,7 +68,7 @@ class InternetResourceReader(BaseReader):
     """
 
     @property
-    def model(self) -> Type[InternetResourceModel]:
+    def model(self) -> type[InternetResourceModel]:
         return InternetResourceModel
 
     @property
@@ -104,7 +103,7 @@ class ArticlesCollectionReader(BaseReader):
     """
 
     @property
-    def model(self) -> Type[ArticlesCollectionModel]:
+    def model(self) -> type[ArticlesCollectionModel]:
         return ArticlesCollectionModel
 
     @property
@@ -145,7 +144,7 @@ class DissertationReader(BaseReader):
     """
 
     @property
-    def model(self) -> Type[DissertationModel]:
+    def model(self) -> type[DissertationModel]:
         return DissertationModel
 
     @property
@@ -188,7 +187,7 @@ class AutoReportReader(DissertationReader):
     """
 
     @property
-    def model(self) -> Type[DissertationModel]:
+    def model(self) -> type[DissertationModel]:
         return AutoReportModel
 
     @property
@@ -202,7 +201,7 @@ class JournalArticleReader(BaseReader):
     """
 
     @property
-    def model(self) -> Type[JournalArticleModel]:
+    def model(self) -> type[JournalArticleModel]:
         return JournalArticleModel
 
     @property
@@ -240,7 +239,7 @@ class RegulationActReader(BaseReader):
     """
 
     @property
-    def model(self) -> Type[RegulationActModel]:
+    def model(self) -> type[RegulationActModel]:
         return RegulationActModel
 
     @property
@@ -285,7 +284,7 @@ class SourcesReader:
     """
 
     # зарегистрированные читатели
-    readers: list[Type[BaseReader]] = [
+    readers: list[type[BaseReader]] = [
         BookReader,
         InternetResourceReader,
         ArticlesCollectionReader,
