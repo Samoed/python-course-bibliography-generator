@@ -33,7 +33,7 @@
 
 Клонируйте репозиторий проекта в свою рабочую директорию:
 
-    .. code-block:: console
+    .. code-block:: bash
 
         git clone https://github.com/mnv/python-course-bibliography-generator.git
 

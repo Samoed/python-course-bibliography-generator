@@ -54,13 +54,13 @@ class BaseReader(ABC):
         .. code-block::
 
             {
-                "authors": {0: str},
-                "title": {1: str},
-                "edition": {2: str},
-                "city": {3: str},
-                "publishing_house": {4: str},
-                "year": {5: int},
-                "pages": {6: int},
+                "authors": 0,
+                "title": 1,
+                "edition": 2,
+                "city": 3,
+                "publishing_house": 4,
+                "year": 5,
+                "pages": 6,
             }
 
         :return: Атрибуты с информацией об индексе столбца и типе данных

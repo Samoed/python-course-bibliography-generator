@@ -36,7 +36,22 @@ class BookReader(BaseReader):
         return "Книга"
 
     @property
-    def attributes(self) -> dict:
+    def attributes(self) -> dict[str, int]:
+        """
+        Атрибуты модели.
+
+        .. code-block::
+
+            {
+                "authors": 0,
+                "title": 1,
+                "edition": 2,
+                "city": 3,
+                "publishing_house": 4,
+                "year": 5,
+                "pages": 6,
+            }
+        """
         return {
             "authors": 0,
             "title": 1,
@@ -62,7 +77,19 @@ class InternetResourceReader(BaseReader):
         return "Интернет-ресурс"
 
     @property
-    def attributes(self) -> dict:
+    def attributes(self) -> dict[str, int]:
+        """
+        Атрибуты модели.
+
+        .. code-block::
+
+            {
+                "article": 0,
+                "website": 1,
+                "link": 2,
+                "access_date": 3,
+            }
+        """
         return {
             "article": 0,
             "website": 1,
@@ -85,7 +112,22 @@ class ArticlesCollectionReader(BaseReader):
         return "Статья из сборника"
 
     @property
-    def attributes(self) -> dict:
+    def attributes(self) -> dict[str, int]:
+        """
+        Атрибуты модели.
+
+        .. code-block::
+
+            {
+                "authors": 0,
+                "article_title": 1,
+                "collection_title": 2,
+                "city": 3,
+                "publishing_house": 4,
+                "year": 5,
+                "pages": 6,
+            }
+        """
         return {
             "authors": 0,
             "article_title": 1,
@@ -111,7 +153,23 @@ class DissertationReader(BaseReader):
         return "Диссертация"
 
     @property
-    def attributes(self) -> dict:
+    def attributes(self) -> dict[str, int]:
+        """
+        Атрибуты модели.
+
+        .. code-block::
+
+            {
+                "author": 0,
+                "title": 1,
+                "author_title": 2,
+                "speciality_field": 3,
+                "speciality_code": 4,
+                "city": 5,
+                "year": 6,
+                "pages": 7,
+            }
+        """
         return {
             "author": 0,
             "title": 1,
@@ -152,7 +210,20 @@ class JournalArticleReader(BaseReader):
         return "Статья из журнала"
 
     @property
-    def attributes(self) -> dict:
+    def attributes(self) -> dict[str, int]:
+        """
+        Атрибуты модели.
+        .. code-block::
+
+            {
+                "authors": 0,
+                "title": 1,
+                "journal": 2,
+                "year": 3,
+                "volume": 4,
+                "pages": 5,
+            }
+        """
         return {
             "authors": 0,
             "title": 1,
@@ -177,7 +248,24 @@ class RegulationActReader(BaseReader):
         return " Закон, нормативный акт и т.п."
 
     @property
-    def attributes(self) -> dict:
+    def attributes(self) -> dict[str, int]:
+        """
+        Атрибуты модели.
+
+        .. code-block::
+
+            {
+                "act_type": 0,
+                "title": 1,
+                "accept_date": 2,
+                "act_number": 3,
+                "official_source": 4,
+                "publication_year": 5,
+                "version": 6,
+                "article_number": 7,
+                "edition": 8,
+            }
+        """
         return {
             "act_type": 0,
             "title": 1,
