@@ -5,7 +5,7 @@
 - Оформлено цитирование APA для книги, интернет-ресурса, сборника статей, нормативного акта, диссертации, автореферата, статьи из журнала
 - Добавлены тесты
 - Обновлена документация
-#+begin_src bash :results output
+#+begin_src bash :results output :exports results
 make all
 #+end_src
 
