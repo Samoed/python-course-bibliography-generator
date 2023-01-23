@@ -1,5 +1,5 @@
 # инструкция по работе с файлом "Makefile" – https://bytes.usc.edu/cs104/wiki/makefile/
-
+.DEFAULT_GOAL := all
 # обновление сборки Docker-контейнера
 build:
 	docker compose build
@@ -24,7 +24,10 @@ run:
 	docker compose run app python main.py --help
 
 run-gost:
-	docker compose run app python main.py --citation gost --path_input /media/input.xlsx --path_output /media/output.xlsx
+	docker compose run app python main.py --citation gost --path_input /media/input.xlsx --path_output /media/output.docx
+
+run-apa:
+	docker compose run app python main.py --citation apa --path_input /media/input.xlsx --path_output /media/output.docx
 
 # запуск всех функций поддержки качества кода
 all: format lint test
