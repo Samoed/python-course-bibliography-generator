@@ -7,6 +7,7 @@
 
 Поддерживаемые стили цитирования:
     - ГОСТ Р 7.0.5-2008
+    - American Psychological Association (APA)
 
 Установка
 =========
@@ -33,7 +34,7 @@
 
 Клонируйте репозиторий проекта в свою рабочую директорию:
 
-    .. code-block:: console
+    .. code-block:: bash
 
         git clone https://github.com/mnv/python-course-bibliography-generator.git
 
@@ -157,4 +158,14 @@
 ===============
 
 .. automodule:: formatters.models
+    :members:
+
+Генерация стелией ГОСТ
+========================
+..  automodule:: formatters.styles.gost
+    :members:
+
+Генерация стелией APA
+=====================
+..  automodule:: formatters.styles.apa
     :members:
